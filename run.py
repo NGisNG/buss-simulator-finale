@@ -163,103 +163,108 @@ class Bus:
                 elif choice == "Exit":
                     break
 
-        def add_passenger(self):
-            """
-            Function to add a passenger to the bus.
-            Asks the user for the passenger's age, gender, and occupation and adds them to the passenger list.
-            """
-            while True:
-                replit.clear()
-                age = get_age()
-                gender = get_gender()
-                occupation = get_occupation()
-                replit.clear() 
-                passenger = Passenger(age, gender, occupation)
-                self.passengers.append(passenger)
-                print("Passenger added successfully...")
-                time.sleep(1)
-
-                additional_choice = get_choice_with_arrows(["Return to menu", "Add a new passenger"])
-
-                if additional_choice == "Return to menu":
-                    break
-
-        def remove_passenger(self):
-            """
-            Function to remove a passenger from the bus.
-            Allows the user to select a passenger by number and remove them from the passenger list.
-            """
-            if not self.passengers:
-                replit.clear()
-                print("No passengers to remove...\n")
-                input(f"Press Enter to continue.")
-                return
-
-            while True:
-                replit.clear()
-                self.view_passengers()
-
-                try:
-                    index = int(input("Enter a number from the list to remove (or enter 0 to cancel): "))
-                    if index == 0:
-                        break
-                    elif 0 < index <= len(self.passengers):
-                        removed_passenger = self.passengers.pop(index - 1)
-                        print(f"\nPassenger removed: {removed_passenger.__dict__}")
-                        time.sleep(3)
-                        input("\nPress Enter to return to the menu...\n")
-                        break
-                    else:
-                        print("\nInvalid passenger number. Try again in 3 seconds!")
-                        time.sleep(3)
-                except ValueError:
-                    print("\nInvalid input. Enter a number in 3 seconds!")
-                    time.sleep(3)
-
-        def view_passengers(self):
-            """
-            Function to display the list of passengers on the bus.
-            Shows details such as age, gender, and occupation for each passenger.
-            """
+    def add_passenger(self):
+        """
+        Function to add a passenger to the bus.
+        Asks the user for the passenger's age, gender, and occupation and adds them to the passenger list.
+        """
+        while True:
             replit.clear()
-            print("\nPassenger list:\n")
-            if not self.passengers:
-                print("No passengers on the list!")
-            for i, passenger in enumerate(self.passengers, start=1):
-                print(f"{i}. Age: {passenger.age}, Gender: {passenger.gender}, Occupation: {passenger.occupation}")
-            input("\nPress Enter to continue...")
+            age = get_age()
+            gender = get_gender()
+            occupation = get_occupation()
+            replit.clear() 
+            passenger = Passenger(age, gender, occupation)
+            self.passengers.append(passenger)
+            print("Passenger added successfully...")
+            time.sleep(1)
 
-        def show_statistics(self):
-            """
-            Function to display statistics of the passengers on the bus.
-            Shows age, gender, and occupation statistics if passengers are present.
-            """    
-            if not self.passengers:
-                replit.clear()
-                print("No statistics to show...\n")
-                input(f"Press Enter to return to the menu.")
-                return
+            additional_choice = get_choice_with_arrows(["Return to menu", "Add a new passenger"])
 
-            while True:
-                replit.clear()
-                print("Statistics:")
-                print("==============================================\n")
-                age_stats = calculate_age_statistics(self.passengers)
-                gender_stats = calculate_gender_percentage(self.passengers)
-                occupation_stats = calculate_occupation_percentage(self.passengers)
-
-                if age_stats:
-                    print("\nAge statistics:\n")
-                    print(f"Average age: {age_stats[0]:.2f}\nYoungest age: {age_stats[1]}\nOldest age: {age_stats[2]}")
-            
-                if gender_stats:
-                    print("\nGender statistics:\n")
-                    for gender, percentage in gender_stats.items():
-                        print(f"{gender.capitalize()}: {percentage:.2f} %")
-
-                if occupation_stats:
-                    print("\nOccupation statistics:\n")
-                    for occupation, percentage in occupation_stats.items():
-                        print(f"{occupation.capitalize()}: {percentage:.2f} %")
+            if additional_choice == "Return to menu":
                 break
-            input("\n\nPress Enter to return to the menu...")
+
+    def remove_passenger(self):
+        """
+        Function to remove a passenger from the bus.
+        Allows the user to select a passenger by number and remove them from the passenger list.
+        """
+        if not self.passengers:
+            replit.clear()
+            print("No passengers to remove...\n")
+            input(f"Press Enter to continue.")
+            return
+
+        while True:
+            replit.clear()
+            self.view_passengers()
+
+            try:
+                index = int(input("Enter a number from the list to remove (or enter 0 to cancel): "))
+                if index == 0:
+                    break
+                elif 0 < index <= len(self.passengers):
+                    removed_passenger = self.passengers.pop(index - 1)
+                    print(f"\nPassenger removed: {removed_passenger.__dict__}")
+                    time.sleep(3)
+                    input("\nPress Enter to return to the menu...\n")
+                    break
+                else:
+                    print("\nInvalid passenger number. Try again in 3 seconds!")
+                    time.sleep(3)
+            except ValueError:
+                print("\nInvalid input. Enter a number in 3 seconds!")
+                time.sleep(3)
+
+    def view_passengers(self):
+        """
+        Function to display the list of passengers on the bus.
+        Shows details such as age, gender, and occupation for each passenger.
+        """
+        replit.clear()
+        print("\nPassenger list:\n")
+        if not self.passengers:
+            print("No passengers on the list!")
+        for i, passenger in enumerate(self.passengers, start=1):
+            print(f"{i}. Age: {passenger.age}, Gender: {passenger.gender}, Occupation: {passenger.occupation}")
+        input("\nPress Enter to continue...")
+
+    def show_statistics(self):
+        """
+        Function to display statistics of the passengers on the bus.
+        Shows age, gender, and occupation statistics if passengers are present.
+        """    
+        if not self.passengers:
+            replit.clear()
+            print("No statistics to show...\n")
+            input(f"Press Enter to return to the menu.")
+            return
+
+        while True:
+            replit.clear()
+            print("Statistics:")
+            print("==============================================\n")
+            age_stats = calculate_age_statistics(self.passengers)
+            gender_stats = calculate_gender_percentage(self.passengers)
+            occupation_stats = calculate_occupation_percentage(self.passengers)
+
+            if age_stats:
+                print("\nAge statistics:\n")
+                print(f"Average age: {age_stats[0]:.2f}\nYoungest age: {age_stats[1]}\nOldest age: {age_stats[2]}")
+        
+            if gender_stats:
+                print("\nGender statistics:\n")
+                for gender, percentage in gender_stats.items():
+                    print(f"{gender.capitalize()}: {percentage:.2f} %")
+
+            if occupation_stats:
+                print("\nOccupation statistics:\n")
+                for occupation, percentage in occupation_stats.items():
+                    print(f"{occupation.capitalize()}: {percentage:.2f} %")
+            break
+        input("\n\nPress Enter to return to the menu...")
+
+# Main program
+if __name__ == "__main__":
+    bus = Bus()
+    bus.run()
