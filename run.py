@@ -68,6 +68,21 @@ def get_occupation():
         replit.clear()
         return get_choice_with_arrows(occupation_options)
 
+def calculate_age_statistics(passengers): 
+    """
+    Function to calculate age statistics for the passengers.
+    Returns average age, youngest age, and oldest age.
+    """
+    if not passengers:
+        return None
+
+    ages = [passenger.age for passenger in passengers]
+    average_age = sum(ages) / len(passengers)
+    min_age = min(ages)
+    max_age = max(ages)
+
+    return average_age, min_age, max_age
+
 
 
 class Passenger:
