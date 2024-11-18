@@ -101,7 +101,30 @@ def calculate_gender_percentage(passengers):
 
     return percentage
 
+def calculate_occupation_percentage(passengers):
+    """
+    Function to calculate the percentage of passengers by occupation.
+    Returns a dictionary with the occupation percentages.
+    """
+    if not passengers:
+        return None
 
+    occupation_count = {
+        "employed": 0,
+        "unemployed": 0,
+        "student": 0,
+        "teenager under 18": 0,
+        "housewife": 0,
+        "child under 7 years": 0
+    }
+
+    for passenger in passengers:
+        occupation_count[passenger.occupation] += 1
+
+    total_passengers = len(passengers)
+    percentage = {occupation: (count / total_passengers) * 100 for occupation, count in occupation_count.items()}
+
+    return percentage
 
 class Passenger:
     """A class to represent a passenger."""
