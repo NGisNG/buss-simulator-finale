@@ -50,6 +50,24 @@ def get_gender():
         gender_options = ["man", "woman", "non-binary"]
         return get_choice_with_arrows(gender_options)
 
+def get_occupation():
+    """
+    Function to get validated occupation input from the user.
+    Allows selection between different occupations such as 'employed', 'unemployed', etc.
+    """
+    while True:
+        replit.clear()
+        occupation_options = [
+            "employed",
+            "unemployed",
+            "student",
+            "teenager under 18",
+            "housewife",
+            "child under 7 years"
+        ]
+        replit.clear()
+        return get_choice_with_arrows(occupation_options)
+
 
 
 class Passenger:
