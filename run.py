@@ -133,4 +133,29 @@ class Bus:
             Function to remove a passenger from the bus.
             Allows the user to select a passenger by number and remove them from the passenger list.
             """
-            
+            if not self.passengers:
+            replit.clear()
+            print("No passengers to remove...\n")
+            input(f"Press Enter to continue.")
+            return
+
+        while True:
+            replit.clear()
+            self.view_passengers()
+
+            try:
+                index = int(input("Enter a number from the list to remove (or enter 0 to cancel): "))
+                if index == 0:
+                    break
+                elif 0 < index <= len(self.passengers):
+                    removed_passenger = self.passengers.pop(index - 1)
+                    print(f"\nPassenger removed: {removed_passenger.__dict__}")
+                    time.sleep(3)
+                    input("\nPress Enter to return to the menu...\n")
+                    break
+                else:
+                    print("\nInvalid passenger number. Try again in 3 seconds!")
+                    time.sleep(3)
+            except ValueError:
+                print("\nInvalid input. Enter a number in 3 seconds!")
+                time.sleep(3)
