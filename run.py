@@ -228,3 +228,9 @@ class Bus:
             for i, passenger in enumerate(self.passengers, start=1):
                 print(f"{i}. Age: {passenger.age}, Gender: {passenger.gender}, Occupation: {passenger.occupation}")
             input("\nPress Enter to continue...")
+
+        def show_statistics(self):
+            """
+            Function to display statistics of the passengers on the bus.
+            Shows age, gender, and occupation statistics if passengers are present.
+            """    
