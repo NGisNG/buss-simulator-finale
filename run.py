@@ -83,6 +83,24 @@ def calculate_age_statistics(passengers):
 
     return average_age, min_age, max_age
 
+def calculate_gender_percentage(passengers):
+    """
+    Function to calculate the percentage of passengers by gender.
+    Returns a dictionary with the gender percentages.
+    """
+    if not passengers:
+        return None
+
+    gender_count = {"man": 0, "woman": 0, "non-binary": 0}
+
+    for passenger in passengers:
+        gender_count[passenger.gender] += 1
+
+    total_passengers = len(passengers)
+    percentage = {gender: (count / total_passengers) * 100 for gender, count in gender_count.items()}
+
+    return percentage
+
 
 
 class Passenger:
