@@ -2,6 +2,28 @@ import replit
 from getkey import getkey, keys
 import time
 
+def get_choice_with_arrows(options):
+    """
+    Function to get the user's choice with arrows using getkey.
+    Displays menu options with an arrow for the selected option.
+    """
+    cursor = 0
+
+    while True:
+        replit.clear()
+
+        for i, option in enumerate(options, start=1):
+            arrow = "<" if i - 1 == cursor else " "
+            print(f"{i}. {option:<24} {arrow}")
+
+        keypressed = getkey()
+        if keypressed == keys.DOWN and cursor + 1 != len(options):
+            cursor += 1
+        elif keypressed == keys.UP and not (cursor == 0):
+            cursor -= 1
+        elif keypressed == keys.ENTER:
+            return options[cursor]
+
 class Passenger:
     """A class to represent a passenger."""
     def __init__(self, age, gender, occupation):
