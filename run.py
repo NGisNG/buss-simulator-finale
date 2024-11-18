@@ -112,18 +112,4 @@ class Bus:
             Function to add a passenger to the bus.
             Asks the user for the passenger's age, gender, and occupation and adds them to the passenger list.
             """
-            while True:
-                replit.clear()
-                age = get_age()
-                gender = get_gender()
-                occupation = get_occupation()
-                replit.clear() 
-                passenger = Passenger(age, gender, occupation)
-                self.passengers.append(passenger)
-                print("Passenger added successfully...")
-                time.sleep(1)
-
-                additional_choice = get_choice_with_arrows(["Return to menu", "Add a new passenger"])
-
-                if additional_choice == "Return to menu":
-                    break
+            
