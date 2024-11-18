@@ -234,3 +234,32 @@ class Bus:
             Function to display statistics of the passengers on the bus.
             Shows age, gender, and occupation statistics if passengers are present.
             """    
+            if not self.passengers:
+                replit.clear()
+                print("No statistics to show...\n")
+                input(f"Press Enter to return to the menu.")
+                return
+
+            while True:
+                replit.clear()
+                print("Statistics:")
+                print("==============================================\n")
+                age_stats = calculate_age_statistics(self.passengers)
+                gender_stats = calculate_gender_percentage(self.passengers)
+                occupation_stats = calculate_occupation_percentage(self.passengers)
+
+                if age_stats:
+                    print("\nAge statistics:\n")
+                    print(f"Average age: {age_stats[0]:.2f}\nYoungest age: {age_stats[1]}\nOldest age: {age_stats[2]}")
+            
+                if gender_stats:
+                    print("\nGender statistics:\n")
+                    for gender, percentage in gender_stats.items():
+                        print(f"{gender.capitalize()}: {percentage:.2f} %")
+
+                if occupation_stats:
+                    print("\nOccupation statistics:\n")
+                    for occupation, percentage in occupation_stats.items():
+                        print(f"{occupation.capitalize()}: {percentage:.2f} %")
+                break
+            input("\n\nPress Enter to return to the menu...")
