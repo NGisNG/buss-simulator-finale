@@ -24,6 +24,22 @@ def get_choice_with_arrows(options):
         elif keypressed == keys.ENTER:
             return options[cursor]
 
+def get_age():
+    """
+    Function to get validated age input from the user.
+    Asks the user to input an age between 1 and 200.
+    """
+    replit.clear()
+    while True:
+        try:
+            age = int(input("Enter your age (1-200): "))
+            if 1 <= age <= 200:
+                return age
+            else:
+                print("\nSomething went wrong! Enter a valid age between 1 and 200.\n")
+        except ValueError:
+            print("\nSomething went wrong! Enter a valid age as a number.\n")
+
 class Passenger:
     """A class to represent a passenger."""
     def __init__(self, age, gender, occupation):
