@@ -40,6 +40,18 @@ def get_age():
         except ValueError:
             print("\nSomething went wrong! Enter a valid age as a number.\n")
 
+def get_gender():
+    """
+    Function to get validated gender input from the user.
+    Allows selection between 'man', 'woman', and 'non-binary'.
+    """
+    while True: 
+        replit.clear()
+        gender_options = ["man", "woman", "non-binary"]
+        return get_choice_with_arrows(gender_options)
+
+
+
 class Passenger:
     """A class to represent a passenger."""
     def __init__(self, age, gender, occupation):
