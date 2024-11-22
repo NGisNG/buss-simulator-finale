@@ -1,6 +1,6 @@
 import replit
 from getkey import getkey, keys
-import time
+import time 
 
 def get_choice_with_arrows(options):
     """
@@ -124,15 +124,17 @@ def calculate_occupation_percentage(passengers):
     total_passengers = len(passengers)
     percentage = {occupation: (count / total_passengers) * 100 for occupation, count in occupation_count.items()}
 
-    return percentage
-
+    return percentage 
+  
 class Passenger:
-    """A class to represent a passenger."""
+    """
+    Class to represent a passenger.
+    Each passenger has an age, gender, and occupation.
+    """
     def __init__(self, age, gender, occupation):
-        """Initialize passenger with age, gender, and occupation."""
         self.age = age
         self.gender = gender
-        self.occupation = occupation 
+        self.occupation = occupation
 
 class Bus:
     """
@@ -143,26 +145,26 @@ class Bus:
     def __init__(self):
         self.passengers = []
     
-        def run(self):
-            """
-            Function to run the bus system.
-            Presents a menu for adding, removing, and viewing passengers, as well as showing statistics.
-            """
-            while True:
-                replit.clear()
-                choice = get_choice_with_arrows(["Add passenger", "Remove passenger", "Show passenger list", "Statistics", "Exit"])
+    def run(self):
+        """
+        Function to run the bus system.
+        Presents a menu for adding, removing, and viewing passengers, as well as showing statistics.
+        """
+        while True:
+            replit.clear()
+            choice = get_choice_with_arrows(["Add passenger", "Remove passenger", "Show passenger list", "Statistics", "Exit"])
 
-                if choice == "Add passenger":
-                    self.add_passenger()
-                elif choice == "Remove passenger":
-                    self.remove_passenger()
-                elif choice == "Show passenger list":
-                    self.view_passengers()
-                elif choice == "Statistics":
-                    self.show_statistics()
-                elif choice == "Exit":
-                    break
-
+            if choice == "Add passenger":
+                self.add_passenger()
+            elif choice == "Remove passenger":
+                self.remove_passenger()
+            elif choice == "Show passenger list":
+                self.view_passengers()
+            elif choice == "Statistics":
+                self.show_statistics()
+            elif choice == "Exit":
+                break
+    
     def add_passenger(self):
         """
         Function to add a passenger to the bus.
@@ -183,7 +185,7 @@ class Bus:
 
             if additional_choice == "Return to menu":
                 break
-
+    
     def remove_passenger(self):
         """
         Function to remove a passenger from the bus.
@@ -233,7 +235,7 @@ class Bus:
         """
         Function to display statistics of the passengers on the bus.
         Shows age, gender, and occupation statistics if passengers are present.
-        """    
+        """
         if not self.passengers:
             replit.clear()
             print("No statistics to show...\n")
@@ -251,7 +253,7 @@ class Bus:
             if age_stats:
                 print("\nAge statistics:\n")
                 print(f"Average age: {age_stats[0]:.2f}\nYoungest age: {age_stats[1]}\nOldest age: {age_stats[2]}")
-        
+         
             if gender_stats:
                 print("\nGender statistics:\n")
                 for gender, percentage in gender_stats.items():
